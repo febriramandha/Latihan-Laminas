@@ -1,0 +1,26 @@
+<?php
+// module/Post/view/post/post/view.phtml:
+
+$title = 'View Post';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<div class="form-group row">
+    <label for="judul" class="col-sm-2 col-form-label">Judul</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="judul" value="<?= $this->escapeHtml($post->judul) ?>" readonly>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+    <div class="col-sm-10">
+        <textarea class="form-control" id="deskripsi" readonly><?= $this->escapeHtml($post->deskripsi) ?></textarea>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="kategori" value="<?= $this->escapeHtml($post->kategori) ?>" readonly>
+    </div>
+</div>

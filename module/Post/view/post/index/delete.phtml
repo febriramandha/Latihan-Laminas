@@ -1,0 +1,23 @@
+<?php
+// module/Post/view/post/post/delete.phtml:
+
+$title = 'Delete Post';
+$url   = $this->url('post', ['action' => 'delete', 'id' => $id]);
+
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+    Apakah Anda yakin ingin menghapus
+    "<?= $this->escapeHtml($post->judul) ?>" Kategori
+    "<?= $this->escapeHtml($post->kategori) ?>"?
+</p>
+
+<form action="<?= $url ?>" method="post">
+    <div class="form-group">
+        <input type="hidden" name="id" value="<?= (int) $post->id ?>" />
+        <input type="submit" class="btn btn-danger" name="del" value="Yes" />
+        <input type="submit" class="btn btn-success" name="del" value="No" />
+    </div>
+</form>

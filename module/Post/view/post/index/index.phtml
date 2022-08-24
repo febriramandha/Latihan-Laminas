@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
+
+<div class="row mb-3">
+    <a href="<?= $this->basePath('post/add'); ?>" class="btn btn-primary">CREATE</a>
+</div>
+
+<div class="row">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Judul</th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($posts as $post) : ?>
+                <tr>
+                    <th><?= $this->escapeHtml($post->id) ?></th>
+                    <td><?= $this->escapeHtml($post->judul) ?></td>
+                    <td><?= $this->escapeHtml($post->deskripsi) ?></td>
+                    <td><?= $this->escapeHtml($post->kategori) ?></td>
+                    <td>
+                        <a href="<?= $this->url('post', ['action' => 'view', 'id' => $post->id]) ?>" class="badge badge-primary">View</a>
+                        <a href="<?= $this->url('post', ['action' => 'edit', 'id' => $post->id]) ?>" class="badge badge-warning">Update</a>
+                        <a href="<?= $this->url('post', ['action' => 'delete', 'id' => $post->id]) ?>" class="badge badge-danger">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

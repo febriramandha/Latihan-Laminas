@@ -1,0 +1,54 @@
+<?php
+$title = 'Add New Post';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title); ?></h1>
+
+<?php
+$judul = $form->get('judul');
+$judul->setAttribute('class', 'form-control');
+$judul->setAttribute('placeholder', 'Post Judul');
+$judul->setAttribute('autocomplete', 'off');
+
+// This provides a default CSS class and placeholder text for the deskripsi element:
+$deskripsi = $form->get('deskripsi');
+$deskripsi->setAttribute('class', 'form-control');
+$deskripsi->setAttribute('placeholder', 'Deskripsi');
+
+// This provides a default CSS class and placeholder text for the kategori element:
+$kategori = $form->get('kategori');
+$kategori->setAttribute('class', 'form-control');
+$kategori->setAttribute('placeholder', 'Kategori');
+$kategori->setAttribute('autocomplete', 'off');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('post', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($judul) ?>
+    <?= $this->formElement($judul) ?>
+    <?= $this->formElementErrors()->render($judul, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($deskripsi) ?>
+    <?= $this->formElement($deskripsi) ?>
+    <?= $this->formElementErrors()->render($deskripsi, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($kategori) ?>
+    <?= $this->formElement($kategori) ?>
+    <?= $this->formElementErrors()->render($kategori, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
